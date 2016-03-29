@@ -5,8 +5,8 @@ const ngAnimate = require('angular-animate');
 const ngAria = require('angular-aria');
 const ngMaterial = require('angular-material');
 
-const loginService = require(`${__scripts}/login/loginService`);
-const loginController = require(`${__scripts}/login/loginController`);
+//const loginService = require(`${__scripts}/login/loginService`);
+//const loginController = require(`${__scripts}/login/loginController`);
 
 module.exports = {
     angular,
@@ -14,6 +14,6 @@ module.exports = {
     ngAnimate,
     ngAria,
     ngMaterial,
-    loginService,
-    loginController
+    //loginService,
+    //loginController
 };
