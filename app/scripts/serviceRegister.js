@@ -1,19 +1,12 @@
 'use strict';
-const angular = require('angular');
-const ngRoute = require('angular-route');
-const ngAnimate = require('angular-animate');
-const ngAria = require('angular-aria');
-const ngMaterial = require('angular-material');
+module.exports = app => {
 
-//const loginService = require(`${__scripts}/login/loginService`);
-//const loginController = require(`${__scripts}/login/loginController`);
+    app.service('config', [function () {
+        return require('config');
+    }]);
+    
+    app.service('vk', ['config', require(`${__scripts}/service/vk`)]);
 
-module.exports = {
-    angular,
-    ngRoute,
-    ngAnimate,
-    ngAria,
-    ngMaterial,
-    //loginService,
-    //loginController
+    return app;
+
 };
