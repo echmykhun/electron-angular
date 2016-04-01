@@ -7,10 +7,48 @@
 <!-- build:css assets/css/app.css -->
 <link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
 <link rel="stylesheet" href="assets/css/photon.min.css"/>
+<link rel="stylesheet" href="assets/css/style.css"/>
 <!-- endbuild -->
 <body>
 <!--<base href="/">-->
-<ng-view></ng-view>
+
+
+<div class="window">
+    <div class="window-content">
+        <div class="pane-group">
+            <div class="pane pane-sm sidebar">
+                <nav class="nav-group">
+                    <a class="nav-group-item" ui-sref="start"
+                       ng-class="{'active':loginActive}"
+                       ng-mouseenter="loginActive=true"
+                       ng-mouseleave="loginActive=false">
+                        <span class="icon icon-login"></span>
+                        login
+                    </a>
+                    <a class="nav-group-item" ui-sref="messages"
+                       ng-class="{'active':messagesActive}"
+                       ng-mouseenter="messagesActive=true"
+                       ng-mouseleave="messagesActive=false">
+                        <span class="icon icon-paper-plane"></span>
+                        messages
+                    </a>
+                    <a class="nav-group-item" href="#"
+                       ng-class="{'active':musicActive}"
+                       ng-mouseenter="musicActive=true"
+                       ng-mouseleave="musicActive=false">
+                        <span class="icon icon-music"></span>
+                        music
+                    </a>
+
+                </nav>
+            </div>
+            <div class="pane">
+                <ui-view/>
+                </ui-view>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- build:app scripts/app.js -->
 <script src="./scripts/app.js"></script>

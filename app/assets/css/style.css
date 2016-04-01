@@ -1,0 +1,12 @@
+.loader{
+    min-width: 65px;
+    min-height: 65px;
+    background-image: url("../img/preloader.gif");
+    background-repeat: no-repeat;
+}
+.incoming-message{
+    background-color: #999999;
+}
+.outgoing-message{
+    background-color: #6db3fd;
+}

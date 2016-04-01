@@ -1,27 +1,45 @@
 'use strict';
 module.exports = app => {
 
-    app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    app.config(['$locationProvider', 'stateHelperProvider', '$urlRouterProvider', function ($locationProvider, stateHelperProvider, $urlRouterProvider) {
 
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
-        }).hashPrefix('*');
+        }).hashPrefix('!');
+        stateHelperProvider
+            .state({
+                url: '/',
+                name: 'start',
+                templateUrl: __templates + '/start/start.html',
+                controller: 'startController as _ctrl'
+            })
+            .state({
+                url: '/messages',
+                name: 'messages',
+                templateUrl: __templates + '/messages/messages.html',
+                controller: 'messagesController',
+                controllerAs: '_ctrl'
+            })
+            .state({
+                url: '/dialog',
+                name: 'dialog',
+                templateUrl: __templates + '/dialog/dialog.html',
+                controller: 'dialogController',
+                controllerAs: '_ctrl',
+                params: {
+                    user: null
+                }
+            })
+            .state({
+                url: '/not-authorised',
+                name: 'not-authorised',
+                template: '<h1>You should login first</h1>'
+            });
 
-        $routeProvider.when('/', {
-            templateUrl: __templates + '/start/start.html',
-            controller: 'startController',
-            controllerAs: '_ctrl'
-        });
-        $routeProvider.when('/messages', {
-            template: '<h1>messages comming soon</h1>'
-            //templateUrl: __templates + '/messages/messages.html',
-            //controller: 'messagesController',
-            //controllerAs: '_ctrl'
-        });
-        $routeProvider.otherwise({redirectTo: '/'});
-    }
-    ]);
+        $urlRouterProvider.otherwise('/');
+
+    }]);
 
 
     return app;

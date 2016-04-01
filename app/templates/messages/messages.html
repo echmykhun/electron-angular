@@ -1,0 +1,17 @@
+<div>
+    <div class="loader" ng-if="_ctrl.isProcessingMessages"></div>
+    <ul class="list-group" ng-if="!_ctrl.isProcessingMessages">
+        <li class="list-group-item" ng-repeat="dialog in _ctrl.dialogs track by $index"
+            ng-class="{'active':active}"
+            ng-mouseenter="active=true"
+            ng-mouseleave="active=false"
+            ui-sref="dialog({user: dialog.user})"
+        >
+            <img class="img-circle media-object pull-left" ng-src="{{dialog.user.photo_50}}" width="32" height="32">
+            <div class="media-body">
+                <strong>{{dialog.user.first_name}} {{dialog.user.last_name}}</strong>
+                <p>{{dialog.message.body | limitTo: 20}}</p>
+            </div>
+        </li>
+    </ul>
+</div>

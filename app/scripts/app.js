@@ -7,19 +7,21 @@
     global.__templates = path.resolve(`${__base}/templates`);
 
     const angular = require('angular');
-    const ngRoute = require('angular-route');
+    //const ngRoute = require('angular-route');
     const ngAnimate = require('angular-animate');
     //const ngAria = require('angular-aria');
     const ngMaterial = require('angular-material');
     const ngUiRouter = require('angular-ui-router');
+    const ngUiRouterHelper = require('angular-ui-router.statehelper');
 
     const serviceRegister = require(`${__scripts}/serviceRegister`);
 
     let app = angular.module('app', [
-        'ngRoute',
+        //'ngRoute',
         'ngMaterial',
-        'ngAnimate'
-        //'ui.router'
+        'ngAnimate',
+        'ui.router',
+        'ui.router.stateHelper'
     ]);
 
     app = require(`${__scripts}/appConfig`)(app);

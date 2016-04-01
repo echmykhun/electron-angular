@@ -1,13 +1,10 @@
 'use strict';
 module.exports = app => {
+    const controllers = require('require-dir')(`${__scripts}/controller`);
 
-    //app.controller('loginController', ['vk', loginController]);
-    //function loginController(vk) {
-    //}
-
-
-    app.controller('startController', ['vk', '$location', '$scope', '$q', require(`${__scripts}/start/startController`)]);
-
+    for (let controllerName in controllers) {
+        app.controller(controllerName, controllers[controllerName]);
+    }
 
     return app;
 };
