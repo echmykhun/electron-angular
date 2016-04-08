@@ -8,7 +8,8 @@ module.exports = ['vk', '$location', '$scope', '$q', 'moment', '$state', functio
 
     const self = this;
     self.isProcessingMessages = true;
-    vk.api.messages.getDialogs({count: 100})
+    // if (!JSON.parse(localStorage.getItem('dialogs'))) {
+    vk.api.messages.getDialogs({count: 20})
         .then(dialogs => {
             let dialogsGetUser = [];
             dialogs.items.forEach(dialog => {
@@ -27,9 +28,15 @@ module.exports = ['vk', '$location', '$scope', '$q', 'moment', '$state', functio
         .then(dialogs => {
             self.isProcessingMessages = false;
             self.dialogs = dialogs;
+            // localStorage.setItem('dialogs', JSON.stringify(dialogs));
             $scope.$apply();
         })
         .catch(err=> console.log(err));
+    // }else{
+    //     self.dialogs = JSON.parse(localStorage.getItem('dialogs'));
+    //     console.log(self.dialogs);
+    //     // $scope.$apply();
+    // }
 
     return this;
 
