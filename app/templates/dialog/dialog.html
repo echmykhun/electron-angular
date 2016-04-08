@@ -1,20 +1,24 @@
 <div>
-    <div style="min-width: 100px ;display: inline-block">
-        <img class="img-circle media-object pull-left" ng-src="{{_ctrl.oponentUser.photo_100}}">
-        <strong>{{_ctrl.oponentUser.first_name}} {{_ctrl.oponentUser.last_name}}</strong>
+    <div style="min-width: 100px ;display: inline-block; float: left">
+        <strong style="display: block">{{_ctrl.oponentUser.first_name}} {{_ctrl.oponentUser.last_name}}</strong>
+        <img class="img-circle media-object pull-left" ng-src="{{_ctrl.oponentUser.photo_100}}" style="display: block">
     </div>
-    <div>
-        <ul class="list-group" ng-if="!_ctrl.isProcessingMessages" style="min-width:50%; display: inline-block">
+    <div style="min-width:50%; display: inline-block;    margin: 0px 12%;">
+        <div style="width: 100%;">
+            <textarea ng-model="_ctrl.messageToSend" style="width: 80%;"></textarea>
+            <button class="btn btn-large btn-primary" ng-click="_ctrl.sendMessage(_ctrl.messageToSend, _ctrl.oponentUser)" style="width: 15%;">send</button>
+        </div>
+        <ul class="list-group" ng-if="!_ctrl.isProcessingMessages">
             <li class="list-group-item" ng-repeat="message in _ctrl.messages.items track by $index"
-                ng-class="{'incoming-message': message.from_id == _ctrl.oponentUser.id, 'outgoing-message': message.from_id == _ctrl.currentUser.id}">
+                ng-class="{'incoming-message': !message.out, 'outgoing-message': message.out}">
                 <div class="media-body">
                     <p>{{message.body}}</p>
                 </div>
             </li>
         </ul>
     </div>
-    <div style="min-width: 100px ;display: inline-block">
-        <img class="img-circle media-object pull-left" ng-src="{{_ctrl.currentUser.photo_100}}">
-        <strong>{{_ctrl.currentUser.first_name}} {{_ctrl.currentUser.last_name}}</strong>
+    <div style="min-width: 100px ;display: inline-block; float: right">
+        <strong style="display: block">{{_ctrl.currentUser.first_name}} {{_ctrl.currentUser.last_name}}</strong>
+        <img style="display: block" class="img-circle media-object pull-left" ng-src="{{_ctrl.currentUser.photo_100}}">
     </div>
 </div>

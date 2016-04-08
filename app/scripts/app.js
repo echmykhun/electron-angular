@@ -14,6 +14,7 @@
     const ngUiRouter = require('angular-ui-router');
     const ngUiRouterHelper = require('angular-ui-router.statehelper');
 
+    const angularSoundManager = require(`${__base}/../node_modules/angular-soundmanager2/dist/angular-soundmanager2.js`);
     const serviceRegister = require(`${__scripts}/serviceRegister`);
 
     let app = angular.module('app', [
@@ -21,7 +22,8 @@
         'ngMaterial',
         'ngAnimate',
         'ui.router',
-        'ui.router.stateHelper'
+        'ui.router.stateHelper',
+        'angularSoundManager'
     ]);
 
     app = require(`${__scripts}/appConfig`)(app);

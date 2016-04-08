@@ -17,8 +17,29 @@ module.exports = ['vk', '$location', '$scope', '$q', '$stateParams', function (v
             console.log(history);
             self.isProcessingMessages = false;
             $scope.$apply();
+
+            return vk.longpoll()
+                .then(() => {
+                    // При запуске longpoll продолжаете делать что то
+                    vk.on('longpoll.message',(msg) => {
+                        // self.messages.items.push(msg);
+                        vk.api.messages.getById({message_ids: [msg.id]}).then(messages => {
+                            self.messages.items.unshift(messages.items[0]);
+                            console.log(messages.items[0]);
+                            $scope.$apply();
+                        });
+                    });
+                });
+
         })
         .catch(err => console.log(err));
+
+
+    self.sendMessage = (msg, targetUser) => {
+        vk.api.messages.send({message: msg, user_id: targetUser.id});
+    };
+
+
 
     return this;
 

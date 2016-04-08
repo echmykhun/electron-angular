@@ -6,8 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-execute 'curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -' do
-  command 'curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -'
+execute 'curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -' do
+  command 'curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -'
 end
 execute "apt-get update" do
   command "apt-get update"

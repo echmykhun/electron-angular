@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     chef.cookbooks_path = "cookbooks"
     chef.add_recipe "bootstrap"
     chef.add_recipe "che-mysql"
-    #chef.add_recipe "che-node"
+    chef.add_recipe "che-node"
     chef.log_level = :debug
   end
   # MongoDB ports

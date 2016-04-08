@@ -5,6 +5,10 @@ module.exports = app => {
         return require('config');
     }]);
 
+    app.service('_', [function () {
+        return require('lodash');
+    }]);
+
     app.service('moment', [function () {
         return require('moment');
     }]);
