@@ -2,9 +2,9 @@
     'use strict';
 
     const path = require('path');
-    global.__base = path.resolve('.');
-    global.__scripts = path.resolve(`${__base}/scripts`);
-    global.__templates = path.resolve(`${__base}/templates`);
+    global.__base = __dirname;
+    global.__scripts = `${__base}/scripts`;
+    global.__templates = `${__base}/templates`;
 
     const angular = require('angular');
     //const ngRoute = require('angular-route');
