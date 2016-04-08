@@ -2,8 +2,8 @@
 module.exports = ['vk', '$location', '$scope', '$q', 'moment', '$state', function (vk, $location, $scope, $q, moment, $state) {
 
     if (!vk.settings.token) {
-        $state.go('/not-authorised');
-        return
+        $state.go('not-authorised');
+        return;
     }
 
     const self = this;
@@ -16,9 +16,9 @@ module.exports = ['vk', '$location', '$scope', '$q', 'moment', '$state', functio
                     vk.api.users.get({user_ids: [dialog.message.user_id], fields: 'photo_50,photo_100'})
                         .then(users => {
                             dialog.user = users[0];
-                            return dialog
+                            return dialog;
                         })
-                )
+                );
             });
 
 

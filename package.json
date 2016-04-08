@@ -4,7 +4,7 @@
     "run-app-debug": "node_modules/.bin/electron --debug=5858 ./app"
   },
   "name": "application-name",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "devDependencies": {
     "electron-prebuilt": "^0.37.2",
     "gulp": "^3.9.1",

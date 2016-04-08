@@ -11,21 +11,31 @@ module.exports = app => {
             .state({
                 url: '/',
                 name: 'start',
-                templateUrl: __templates + '/start/start.html',
+                templateUrl: __templates + '/start.html',
                 controller: 'startController as _ctrl'
             })
             .state({
                 url: '/messages',
                 name: 'messages',
-                templateUrl: __templates + '/messages/messages.html',
+                templateUrl: __templates + '/messages.html',
                 controller: 'messagesController',
                 controllerAs: '_ctrl'
             })
             .state({
                 url: '/dialog',
                 name: 'dialog',
-                templateUrl: __templates + '/dialog/dialog.html',
+                templateUrl: __templates + '/dialog.html',
                 controller: 'dialogController',
+                controllerAs: '_ctrl',
+                params: {
+                    user: null
+                }
+            })
+            .state({
+                url: '/music',
+                name: 'music',
+                templateUrl: __templates + '/music.html',
+                controller: 'musicController',
                 controllerAs: '_ctrl',
                 params: {
                     user: null
